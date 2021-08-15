@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
+      <div class="field">
+      </div>
+      <div class="field">
+        <p>商品詳細 <%= @customer.first_name %><%= @customer.last_name %></p>
+      </div>
+      <div class="field">
+        <p>フリガナ<%= @customer.kana_first_name %><%= @customer.kana_last_name %></p>
+      </div>
+      <div class="field">
+        <td>郵便番号 <%= @customer.postal_code %></td>
+      </div>
+      <div class="field">
+        <p>住所 <%= @customer.residence %></p>
+      </div>
+      <div class="field">
+        <p>電話番号 <%= @customer.phone_number %></p>
+      </div>
+      <div class="field">
+        <p>メールアドレス <%= @customer.email %></p>
+      </div>
+      <div class="field">
+        <%= link_to  edit_customer_path do %>
+          編集する
+        <% end %>
+      </div>
+    <div class="col-md-8 offset-md-1">
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
