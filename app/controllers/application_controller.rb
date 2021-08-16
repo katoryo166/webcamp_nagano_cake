@@ -2,13 +2,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-  case resource
-  when Admin
-     admin_items_path
-  when Customer
-    items_path
-  end
-
+    case resource
+      when Admin
+         admin_items_path
+      when Customer
+        items_path
+    end
   end
   protected
 
@@ -19,5 +18,9 @@ class ApplicationController < ActionController::Base
 
       #sign_upの際にnameのデータ操作を許。追加したカラム。
   		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  end
+
+  def current_cart
+    @cart = CartItem.find(params[:id])
   end
 end

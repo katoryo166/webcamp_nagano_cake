@@ -1,2 +1,25 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <div class="clearfix product-box">
+          <div class="col-xs-5">
+             <%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x200"%>
+             <h2><%= @item.name %></h2>
+            <p><%= @item.introduction %></p>
+          </div>
+         <div class="col-xs-5">
+          <%= form_with model:@cart_item, url: cart_items_path,  local:true do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+            <p>
+              <%= f.select :amount, [['1個', 1], ['2個', 2], ['3個', 3]] , {:prompt => "個数選択"} %>
+            </p>
+            <div class="col-xs-5">
+              <%= f.submit "カートに入れる" %>
+            </div>
+          <% end %>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+

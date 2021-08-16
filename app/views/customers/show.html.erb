@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-8 offset-md-1">
       <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
       <div class="field">
       </div>
@@ -27,6 +27,9 @@
           編集する
         <% end %>
       </div>
+      <div class="form_group">
+          <%= link_to "退会する",confirm_unsubscribe_customers_path %>
+        </div>
     <div class="col-md-8 offset-md-1">
 
     </div>

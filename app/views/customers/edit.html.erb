@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-8 offset-md-1">
       <h2>会員情報編集</h2>
       <%= form_with model: @customer, url:customer_path, local: true do |f| %>
         <div class="field">
@@ -36,9 +36,7 @@
         <div class="actions">
           <%= f.submit "変更を保存" %>
         </div>
-        <div class="form_group">
 
-        </div>
       <% end %>
     <div class="col-md-8 offset-md-1">
 

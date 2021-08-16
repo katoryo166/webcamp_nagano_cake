@@ -2,27 +2,18 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>商品一覧</h2>
-      <div class="form_group">
-      <table class="table">
-        <tbody>
-          <% @items.each do |item| %>
-          <tr>
-            <td>
-              <%= attachment_image_tag item, :image ,format: 'jpeg', size: "200x200" %>
-            </td>
-             <td>
-              <%= link_to item_path(item.id) do %>
+      <div class="clearfix product-box">
+        <% @items.each do |item| %>
+        <% if item.is_active == true %>
+          <div><%= attachment_image_tag item, :image ,format: 'jpeg', size: "200x200" %></div>
+              <p class="product-name">
+                <%= link_to item_path(item.id) do %>
                 <%= item.name %>
-              <% end %>
-            </td>
-            <td></td>
-             <td>
+                <% end %>
+              </p>
                \<%= item.price %>
-            </td>
-          </tr>
           <% end %>
-        </tbody>
-      </table>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8 offset-md-1">
