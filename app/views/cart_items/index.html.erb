@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <%= link_to "カートを空にする", cart_items_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @cart_items.each do |cart_item| %>
+          <tbody>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.add_tax_price %></td>
+              <td>
+                <%= form_with model: cart_item, url: cart_item_path(cart_item), local:true do |f| %>
+                  <%= f.select :amount, *[1..9] %>
+                  <%= f.submit "変更" %>
+                <% end %>
+              </td>
+              <td><%= cart_item.subtotal%></td>
+              <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
+            </tr>
+          </tbody>
+          <% end %>
+      </table>
+    </div>
+    <div class="col-xs-8">
+      <span><%= link_to "買い物を続ける", root_path %></span>
+    </div>
+    <div class="col-xs-5">
+      <table>
+        <tr>
+          <td class="col-xs-2">合計金額</td>
+          <td class="col-xs-2">\<%= @total_price.floor.to_s %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
