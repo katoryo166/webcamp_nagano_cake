@@ -10,6 +10,8 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
+    #カートの中に同じ商品が重複しないようにして数量を合わせる
+
     @cart_item.save!
     redirect_to cart_items_path
   end

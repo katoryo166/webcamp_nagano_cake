@@ -15,12 +15,14 @@
       <section>
         <h2>新着商品</h2>
         <% @items.last(4).each do |item| %>
+        <% if item.is_active == true %>
           <div><%= attachment_image_tag item, :image ,format: 'jpeg', size: "200x200" %></div>
               <%= link_to item_path(item.id) do %>
                 <%= item.name %>
               <% end %>
                \<%= item.price %>
             <%= item.genre.name %>
+          <% end %>
           <% end %>
       </section>
     </div>

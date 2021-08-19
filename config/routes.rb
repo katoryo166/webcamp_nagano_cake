@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'cart_items/index'
   devise_for :customers, :controllers => {
     :sessions => 'customers/sessions',
     :registrations => 'customers/registrations',
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
       end
     end
     resources :orders, only:[:index, :new, :show, :thanks, :confirum]
-     resources :address, only:[:index, :create, :edit, :update, :destroy]
+    resources :addresses, only:[:index, :create, :edit, :update, :destroy]
     root 'homes#top'
     get 'homes/about' => 'homes#about'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
