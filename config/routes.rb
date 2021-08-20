@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'orders/index'
+  get 'orders/new'
+  get 'orders/show'
+  get 'index/new'
+  get 'index/show'
   devise_for :customers, :controllers => {
     :sessions => 'customers/sessions',
     :registrations => 'customers/registrations',
