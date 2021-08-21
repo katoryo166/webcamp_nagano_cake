@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'orders/index'
-  get 'orders/new'
-  get 'orders/show'
-  get 'index/new'
-  get 'index/show'
   devise_for :customers, :controllers => {
     :sessions => 'customers/sessions',
     :registrations => 'customers/registrations',
@@ -35,7 +30,12 @@ Rails.application.routes.draw do
       delete 'cart_items' => 'cart_items#destroy_all'
       end
     end
-    resources :orders, only:[:index, :new, :show, :thanks, :confirum]
+    resources :orders, only:[:index, :new, :show, :create ] do
+      collection do
+      post 'confirum' => 'orders#confirum', as:'confirum'
+      get 'thanks' => 'orders#thanks', as:'thanks'
+      end
+    end
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
     root 'homes#top'
     get 'homes/about' => 'homes#about'
