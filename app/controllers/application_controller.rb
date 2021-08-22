@@ -21,7 +21,5 @@ class ApplicationController < ActionController::Base
   		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 
-  def current_cart
-    @cart = CartItem.find(params[:id])
-  end
+
 end
