@@ -1,19 +1,23 @@
 class OrdersController < ApplicationController
+
   def index
+    @orders = current_customer.orders
   end
 
   def new
     @order = Order.new
     @customer = current_customer
-    @addresses = Address.find_by(customer_id: current_customer.id)
+    @addresses = Address.find_by(customer_id: current_customer)
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    #byebug
     @order.save
-    @cart_items.destroy
-    redirect_to confirum_orders_path
+    @cart_item = current_customer.cart_items
+    @cart_item.destroy_all
+    redirect_to thanks_orders_path
   end
 
   def show
@@ -42,6 +46,9 @@ class OrdersController < ApplicationController
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
       end
+  end
+
+  def thanks
   end
 
   private

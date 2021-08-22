@@ -1,2 +1,16 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
+<tabel>
+  <theard>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+    </tr>
+  </theard>
+  <tbody>
+  <% @orders.each do |order| %>
+      <%= order.postal_code %><br>
+      <%= order.address %><br>
+      <%= order.name %>
+  <% end %>
+</tbody>
+</tabel>

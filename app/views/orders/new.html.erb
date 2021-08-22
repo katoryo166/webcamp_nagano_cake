@@ -6,25 +6,25 @@
       <%= form_with model:@order, url: confirum_orders_path, local:true do |f| %>
         <div class="form_group">
           <h3>支払方法</h3>
-          <%= f.radio_button :payment_method, Order.payment_methods.key(0)%>
+          <%= f.radio_button :payment_method, "credit_card" %>
           <%= f.label :payment_metho, Order.payment_methods_i18n[:credit_card] %>
-          <%= f.radio_button :payment_method,Order.payment_methods.key(1) %>
+          <%= f.radio_button :payment_method, "transfer" %>
           <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
         </div>
         <div class="form_group">
           <h3>お届け先</h3>
           <span> </span><%= f.radio_button :addresses, "residence", checked: true  %>
-          
+
           <%= f.label :ご自身の住所 %><br />
           <p>
             〒<%= @customer.postal_code %> <%= @customer.residence %><br />
             <%= @customer.first_name %><%= @customer.last_name %>
           </p>
           <span> </span><%= f.radio_button :addresses, "addresses" %>
-          
+
           <%= f.label :登録済み住所から選択 %><br />
           <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %><br />
-          
+
           <span> </span><%= f.radio_button :addresses, "new_address" %>
           <%= f.label :新しいお届け先 %><br />
           <%= f.label :郵便番号（ハイフンなし）%><br />
