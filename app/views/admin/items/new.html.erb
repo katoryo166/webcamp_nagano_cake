@@ -3,6 +3,7 @@
     <div class="col-xs-12">
       <h2>商品新規登録</h2>
       <%= form_with model:@item, url:admin_items_path,  local:true do |f| %>
+      <%= render "layouts/error_messeges", resource: @item %>
       <div class="form_group">
         <%= f.label :"商品画像" %>
         <%= f.attachment_field :image %>

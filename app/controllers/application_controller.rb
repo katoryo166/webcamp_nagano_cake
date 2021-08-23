@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       when Admin
          admin_items_path
       when Customer
-        items_path
+        customer_path(resource)
     end
   end
   protected

@@ -3,6 +3,7 @@
     <div class="col-md-8 offset-md-1">
       <h2>会員情報編集</h2>
       <%= form_with model: @customer, url:customer_path, local: true do |f| %>
+      <%= render "layouts/error_messeges", resource: @customer %>
         <div class="field">
           <%= f.label :"名前", class: "col-sm-2 control-label" %>
           <%= f.label :first_name, "(姓)" %>

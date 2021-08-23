@@ -15,8 +15,17 @@ class OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     #byebug
     @order.save
-    @cart_item = current_customer.cart_items
-    @cart_item.destroy_all
+    # カート商品の情報を注文商品に移動
+    @cart_items = current_customer.cart_items
+       @cart_items.each do |cart_item|
+        OrderDetail.create(
+      item:  cart_item.item,
+      order:    @order,
+      amount: cart_item.amount
+
+    )
+  end
+    @cart_items.destroy_all
     redirect_to thanks_orders_path
   end
 
@@ -49,6 +58,11 @@ class OrdersController < ApplicationController
   end
 
   def thanks
+  end
+
+  def show
+     @order = Order.find(params[:id])
+     @order_details = @order.order_details
   end
 
   private

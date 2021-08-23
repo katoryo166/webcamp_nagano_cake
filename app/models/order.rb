@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
   belongs_to :customer
-  has_many :order_detailes
+  has_many :order_details
 
   def shipping
     (self.shipping_cost = 800).round
