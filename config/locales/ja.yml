@@ -5,3 +5,15 @@ ja:
       payment_method:
         credit_card: 'クレジットカード'
         transfer: '銀行振込'
+      status:
+        notpay: '入金待ち'
+        paid: '入金済み'
+        creating: "制作中"
+        preparation: '発送準備'
+        shipping: '発送済み'
+    order_detail:
+      making_status:
+        cannot: '制作不可'
+        nocreate: '制作待ち'
+        creating: '制作中'
+        finished: '制作完了'

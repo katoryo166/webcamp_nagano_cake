@@ -8,7 +8,7 @@
           <h3>支払方法</h3>
           <%= f.radio_button :payment_method, "credit_card" %>
           <%= f.label :payment_metho, Order.payment_methods_i18n[:credit_card] %>
-          <%= f.radio_button :payment_method, "transfer" %>
+          <%= f.radio_button :payment_method, "transfer", checked: true %>
           <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
         </div>
         <div class="form_group">
