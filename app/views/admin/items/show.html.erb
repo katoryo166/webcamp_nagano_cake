@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-xs-12">
       <h2>商品詳細</h2>
+      <p id="notice"><%= flash[:notice] %></p>
+      <p id="notice"><%= flash[:success] %></p>
       <div class="field">
         <%= attachment_image_tag @item, :image, format: 'jpeg', size: "100x100" %>
       </div>
@@ -34,9 +36,6 @@
           削除
         <% end %>
       </div>
-    <div class="col-md-8 offset-md-1">
-
-    </div>
     </div>
   </div>
 </div>

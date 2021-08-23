@@ -11,4 +11,8 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
+
+  validates :first_name, :last_name, :kana_first_name, :kana_last_name,:residence, :phone_number, presence: true
+  validates :postal_code, length: {is: 7}, numericality: { only_integer: true }
+  validates :phone_number, numericality: { only_integer: true }
 end
