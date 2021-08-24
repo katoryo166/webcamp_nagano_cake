@@ -4,10 +4,6 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def change
-    add_column :customers, :is_active, :boolean, default: true, null: false
-  end
-
   has_many :cart_items
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy

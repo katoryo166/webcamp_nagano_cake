@@ -8,29 +8,28 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
+    @cart_item = current_customer.cart_items.build(cart_item_params)
+    @cart_items = current_customer.cart_items.all
     #カートの中に同じ商品が重複しないようにして数量を合わせる
-    if @cart_item.save
+    not_true = false
+
+      @cart_items.each do |cart_item|
+        if cart_item.item_id == @cart_item.item_id
+          new_amount = cart_item.amount + @cart_item.amount
+          cart_item.update_attribute(:amount, new_amount)
+          not_true = true
+        end
+      end
+      if !not_true
+        @cart_item.save
         flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
-        redirect_to cart_items_path
-    else
-      flash[:notice] = "個数を選択してください"
-      render "items/show"
-    end
+      end
+    redirect_to cart_items_path
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
-
-    @update_cart_item = CartItem.find(item: @cart_item.item)
-      if @update_cart_item.present? && @cart_item.valid?
-        @cart_item.amount += @update_cart_item.amount
-        @update_cart_item.destroy
-      end
-
     @cart_item.update(cart_item_params)
-    @total = total_price(@cart_items).to_s(:delimited)
     redirect_to cart_items_path
   end
 
