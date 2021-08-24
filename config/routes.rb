@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-  end
   devise_for :customers, :controllers => {
     :sessions => 'customers/sessions',
     :registrations => 'customers/registrations',
@@ -19,6 +15,8 @@ Rails.application.routes.draw do
     resources :items,only: [:index, :new, :create, :show, :edit, :update, :destroy]
     resources :genres,only: [:index,:create,:edit,:update, :show, :destroy]
     resources :customers,only: [:index,:show, :create,:edit, :update, :destroy]
+    resources :orders,only: [:index,:show, :update]
+    resources :order_details,only: [:update]
   end
 
     resources :items, only: [:index, :show]

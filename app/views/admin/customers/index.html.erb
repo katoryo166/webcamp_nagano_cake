@@ -21,7 +21,7 @@
               <td>
                 <% if customer.is_active == true %>
       					<p><i class="fas fa-bullseye red"></i>有効</p>
-      				<% else customer.is_active == false %>
+      				<% elsif customer.is_active == false %>
       					<p><i class="fas fa-bullseye blue"></i>退会</p>
       				<% end %>
               </td>
