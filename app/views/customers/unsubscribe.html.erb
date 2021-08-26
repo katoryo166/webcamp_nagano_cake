@@ -1,17 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h2>本当に退会しますか？</h2>
-      <div class="">
+<div class="row">
+  <div class="col-xs-12">
+    <h2>本当に退会しますか？</h2>
+    <div class="">
         退会すると、会員登録情報や
         これまでの購入履歴が閲覧できなくなります。
         退会する場合は「退会する」をクリックしてください。
-      </div>
-      <%= link_to "退会しない", customer_path(current_customer.id) %>
-      <%= link_to "退会する", withdraw_customers_path(@customer), method: :patch, "data-confirm" => "本当に退会してもよろしいですか？" %>
     </div>
-    <div class="col-md-8 offset-md-1">
-
+    <div class="actions col-xs-10 col-xs-offset-2">
+      <%= link_to "退会しない", customer_path(current_customer.id), class:"btn btn-primary" %>
+      <%= link_to "退会する", withdraw_customers_path(@customer), method: :patch,　class:"btn btn-danger", "data-confirm" => "本当に退会してもよろしいですか？" %>
     </div>
   </div>
 </div>

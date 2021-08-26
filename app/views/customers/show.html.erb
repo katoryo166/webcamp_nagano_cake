@@ -1,41 +1,39 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <p id="notice"><%= flash[:notice] %></p>
+<p id="notice" class="text-success"><%= flash[:notice] %></p>
+ <div class="row">
+    <div class="col-md-10 offset-md-1">
       <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
-      <div class="field">
-      </div>
-      <div class="field">
-        <p>商品詳細 <%= @customer.first_name %><%= @customer.last_name %></p>
-      </div>
-      <div class="field">
-        <p>フリガナ<%= @customer.kana_first_name %><%= @customer.kana_last_name %></p>
-      </div>
-      <div class="field">
-        <td>郵便番号 <%= @customer.postal_code %></td>
-      </div>
-      <div class="field">
-        <p>住所 <%= @customer.residence %></p>
-      </div>
-      <div class="field">
-        <p>電話番号 <%= @customer.phone_number %></p>
-      </div>
-      <div class="field">
-        <p>メールアドレス <%= @customer.email %></p>
-      </div>
-      <div class="field">
-        <%= link_to  edit_customer_path do %>
-          編集する
-        <% end %>
-      </div>
+      <p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
+			  <%= link_to " 編集する", edit_customer_path, class: "btn btn-success" %>
+		  </p>
+      <table class="table table-bordered table-condensed">
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.first_name %><%= @customer.last_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.kana_first_name %><%= @customer.kana_last_name %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @customer.residence %></td>
+        </tr>
+        <tr>
+         <th>電話番号</th>
+         <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
       <div class="form_group">
-          <%= link_to "一覧をみる", addresses_path %>
-          <%= link_to "退会する",confirm_unsubscribe_customers_path %>
-          <%= link_to "注文履歴", orders_path %>
-        </div>
-    <div class="col-md-8 offset-md-1">
-
-    </div>
+          <p><strong>配送先　</strong> <%= link_to "一覧をみる", addresses_path, class:"btn btn-primary" %></p>
+          <p><strong>注文履歴</strong> <%= link_to "一覧をみる", orders_path, class:"btn btn-primary" %></p>
+      </div>
     </div>
   </div>
-</div>

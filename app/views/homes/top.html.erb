@@ -1,30 +1,29 @@
-<div class="container">
+  <div class="col-md-1">
+  </div>
+  <p id="notice"><%= flash[:notice] %></p>
   <div class="row">
-    <div class="col-md-3">
-      <h3>ジャンル検索</h3>
-      <p id="notice"><%= flash[:notice] %></p>
-    </div>
-    <div class="col-md-8 offset-md-1">
-      <section>
-        <p>ようこそ、ながのCAKEへ！<br />
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6" style=" margin: auto;">
+        <h4 style="font-family: HiraMinPro-W6; color: #000000; width: 100%;  margin: 20px 0;">ようこそ、ながのCAKEへ！<br />
           このサイトは、ケーキ販売のECサイトになります。<br />
           会員ではない方も商品の閲覧はできますが、<br />
           購入時には会員登録が必要です。
-        </p>
-      </section>
-      <section>
-        <h2>新着商品</h2>
-        <% @items.last(4).each do |item| %>
-        <% if item.is_active == true %>
-          <div><%= attachment_image_tag item, :image ,format: 'jpeg', size: "200x200" %></div>
-              <%= link_to item_path(item.id) do %>
-                <%= item.name %>
-              <% end %>
-               \<%= item.price %>
-            <%= item.genre.name %>
-          <% end %>
-          <% end %>
-      </section>
+        </h4>
     </div>
   </div>
-</div>
+  <h2>新着商品</h2>
+  <div class="row">
+        <% @items.last(4).each do |item| %>
+        <% if item.is_active == true %>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="card mb-5" style=" margin: 40px auto;">
+                <%= link_to item_path(item.id) do %>
+                  <%= attachment_image_tag item, :image ,format: 'jpeg',class: "bd-placeholder-img card-img-top", size: "200x200" %>
+                  <%= item.name %>
+                <% end %>
+                \<%= item.price %>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+    </div>
+  </div>

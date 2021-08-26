@@ -1,26 +1,29 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <div class="clearfix product-box">
-          <div class="col-xs-5">
-             <%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x200"%>
+  <div class="col-xs-5">
+    <%= attachment_image_tag @item, :image, format: 'jpeg', size: "200x200"%>
+    </div>
+          <div class="col-xs-6">
+            <div class="field">
              <h2><%= @item.name %></h2>
+            </div>
+            <div class="field">
              <p><%= @item.introduction %></p>
-             <p>\<%= @item.add_tax_price %>（税込）</p>
-          </div>
-         <div class="col-xs-5">
+            </div>
+            <div class="field">
+             \<%= @item.add_tax_price %>（税込）
+            </div>
+            </div>
+      <div class="row">
+        <div class="col-xs-2">
+	       </div>
+         <div class="field">
           <%= form_with model:@cart_item, url: cart_items_path,  local:true do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
             <p>
               個数を選択してください。
             </p>
-            <div class="col-xs-5">
               <%= f.select :amount, *[1..9] %>
               <%= f.submit "カートに入れる" %>
-            </div>
           <% end %>
-         </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+
