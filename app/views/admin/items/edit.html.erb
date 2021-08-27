@@ -1,26 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
+<div class="row">
+    <div class="col-xs-12  offset-md-1">
       <h2>商品編集</h2>
       <%= form_with model:@item, url:admin_item_path,  local:true do |f| %>
+      <div class="col-xs-4 col-xs-offset-1">
+        <div class="form_group">
+        <%= f.label :"商品画像", class: "col-sm-3" %>
+        <%= f.attachment_field :image, class: "col-sm-9" %>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="form_group">
+          <%= f.label :"商品名", class: "col-sm-3" %>
+          <%= f.text_field :name, class: "col-sm-9"  %>
+        </div>
+        <div class="form_group">
+        <%= f.label :"商品説明", class: "col-sm-3" %>
+        <%= f.text_area :introduction, class: "col-sm-9"%>
+        </div>
       <div class="form_group">
-        <%= f.label :"商品画像" %>
-        <%= f.attachment_field :image %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9") %>
       </div>
       <div class="form_group">
-        <%= f.label :"商品名" %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="form_group">
-        <%= f.label :"商品説明" %>
-        <%= f.text_area :introduction %>
-      </div>
-      <div class="form_group">
-        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 genre_id") %>
-      </div>
-      <div class="form_group">
-        <%= f.label :"税抜価格" %>
-        <%= f.text_field :price %>
+        <%= f.label :"税抜価格", class: "col-sm-3" %>
+        <%= f.text_field :price, class: "col-sm-9" %>
       </div>
       <div class="form_group">
         <%= f.label :"販売ステータス" %>
@@ -29,14 +31,11 @@
         <%= f.radio_button :is_active, :false %>
         <%= f.label :"販売停止中" %>
       </div>
-      <div class="form_group">
+      <div class="col-xs-6">
         <%= f.submit "新規登録" %>
+      </div>
       </div>
       <% end %>
     </div>
-    <div class="col-md-8 offset-md-1">
-
-    </div>
   </div>
-</div>
 

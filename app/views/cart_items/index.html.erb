@@ -1,7 +1,8 @@
 <div class="row">
-<p id="notice"><%= flash[:notice] %></p>
-  <div class="col-xs-11" style=" margin: auto;">
+<p id="notice" class="text-success"><%= flash[:notice] %></p>
+  <div class="col-md-10  offset-md-1">
       <h2>ショッピングカート</h2>
+      <div class="border mb-4 mx-auto" style="width:100%"></div>
       <div class="pull-right margin-bottom" style=" margin: 20px auto ;">
         <%= link_to "カートを空にする", cart_items_cart_items_path, class:"glyphicon glyphicon-trash btn-sm btn-danger", method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} %>
       </div>
@@ -22,7 +23,7 @@
               <td><%= cart_item.item.add_tax_price %></td>
               <td>
                 <%= form_with model: cart_item, url: cart_item_path(cart_item), local:true do |f| %>
-                  <%= f.number_field :amount, min:1, max:10000, step:1%>
+                  <%= f.select :amount, *[1..15] %>
                   <%= f.submit "変更" , class:"glyphicon glyphicon-trash btn-sm btn-success"%>
                 <% end %>
               </td>

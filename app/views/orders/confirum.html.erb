@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="row">
+<h2>注文情報確認画面</h2>
+<div class="row">
     <div class="col-md-8 offset-md-1">
-      <h2>注文情報確認画面</h2>
-      <table class="table">
+
+      <table class="table table-bordered table-condensed">
         <thead>
           <tr>
             <th>商品名</th>
@@ -28,15 +28,15 @@
       <table>
         <tr>
           <th>送料</th>
-          <td>\<%= @order.shipping %></td>
+          <td>￥<%= @order.shipping %></td>
         </tr>
         <tr>
           <th>商品合計</th>
-          <td class="col-xs-2">\<%= @total_price.floor.to_s %></td>
+          <td class="col-xs-2">￥<%= @total_price.floor.to_s %></td>
         </tr>
         <tr>
           <th>請求金額</th>
-          <td>\<%= (@order.total_payment=(@order.shipping + @total_price).floor).to_s(:delimited) %></td>
+          <td>￥<%= (@order.total_payment=(@order.shipping + @total_price).floor).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
@@ -56,5 +56,5 @@
         <%=f.submit "注文を確定する" %>
       <% end %>
     </div>
-  </div>
-</div>
+    </div>
+

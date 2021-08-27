@@ -1,10 +1,13 @@
-<p id="notice" class="text-success"><%= flash[:notice] %></p>
  <div class="row">
-    <div class="col-md-10 offset-md-1">
+   <p id="notice" class="text-success"><%= flash[:notice] %></p>
+    <div class="col-md-10 col-xs-12 offset-md-1">
       <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細</h2>
+      <div class="border mb-4 mx-auto" style="width:100%"></div>
+
       <p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
 			  <%= link_to " 編集する", edit_customer_path, class: "btn btn-success" %>
 		  </p>
+
       <table class="table table-bordered table-condensed">
         <tr>
           <th>氏名</th>

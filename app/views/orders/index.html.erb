@@ -1,7 +1,6 @@
-<div class="container">
-  <h2>注文履歴</h2>
-  <div class="row">
-    <div class="col-xs-12">
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h2>注文履歴</h2>
        <table class="table table-bordered table-condensed">
           <tr>
             <th class="col-xs-3">注文日</th>
@@ -24,14 +23,14 @@
     		      <%= order_detail.item.name %><br>
     		    <% end %>
           </td>
-          <td>\<%= order.total_payment %></td>
+          <td>￥<%= order.total_payment %></td>
           <td><%= order.status_i18n %></td>
-          <td><%= link_to "詳細", order_path(order.id) %></td>
+          <td><%= link_to "詳細", order_path(order.id), class:"glyphicon glyphicon-pencil btn-sm btn-primary" %></td>
         </tr>
       <% end %>
     </table>
     </div>
   </div>
-</div>
+
 
 

@@ -1,6 +1,6 @@
   <div class="col-md-1">
   </div>
-  <p id="notice"><%= flash[:notice] %></p>
+  <p id="notice" class="text-success"><%= flash[:notice] %></p>
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6" style=" margin: auto;">
         <h4 style="font-family: HiraMinPro-W6; color: #000000; width: 100%;  margin: 20px 0;">ようこそ、ながのCAKEへ！<br />
@@ -15,15 +15,20 @@
         <% @items.last(4).each do |item| %>
         <% if item.is_active == true %>
           <div class="col-sm-6 col-md-4 col-lg-3">
-              <div class="card mb-5" style=" margin: 40px auto;">
+            <div class="card mb-5" style=" margin: 40px auto;">
+              <div class="card-body" >
                 <%= link_to item_path(item.id) do %>
                   <%= attachment_image_tag item, :image ,format: 'jpeg',class: "bd-placeholder-img card-img-top", size: "200x200" %>
                   <%= item.name %>
                 <% end %>
-                \<%= item.price %>
+                <p>￥<%= item.price %></p>
+              </div>
             </div>
           </div>
           <% end %>
-          <% end %>
-    </div>
+        <% end %>
   </div>
+  <div class="col-xs-12">
+      <%= link_to "全ての商品を見る", items_path, class: "btn-link " %>
+    </div>
+</div>
