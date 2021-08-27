@@ -8,7 +8,8 @@ Things you may want to cover:
 #ながのケーキ　ECサイト
   DMM WEBCAMPのチーム開発で作成するアプリ　※チーム開発はしてません。
 
-##顧客側
+#顧客側
+
     1ログイン機能
     
     2 ログアウト機能
