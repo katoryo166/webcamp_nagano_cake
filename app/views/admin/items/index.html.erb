@@ -34,9 +34,9 @@
             <td><%= item.genre.name %></td>
              <td>
               <% if item.is_active == true %>
-      					<p><i class="fas fa-bullseye red"></i>販売中</p>
-      				<% else item.is_active == false %>
-      					<p><i class="fas fa-bullseye blue"></i>販売停止中</p>
+      					<p class="text-success">販売中</p>
+      				<% elsif item.is_active == false %>
+      					<p class="text-danger">販売停止中</p>
       				<% end %>
             </td>
           </tr>

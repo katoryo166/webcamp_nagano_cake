@@ -20,9 +20,9 @@
               <td><%= customer.email %></td>
               <td>
                 <% if customer.is_active == true %>
-      					<p><i class="fas fa-bullseye red"></i>有効</p>
+      					<p class="text-success">有効</p>
       				<% elsif customer.is_active == false %>
-      					<p><i class="fas fa-bullseye blue"></i>退会</p>
+      					<p class="text-danger">退会</p>
       				<% end %>
               </td>
               <td><%= link_to "詳細", admin_customer_path(customer.id) %></td>

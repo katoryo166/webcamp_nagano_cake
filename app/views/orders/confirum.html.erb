@@ -1,7 +1,6 @@
 <h2>注文情報確認画面</h2>
 <div class="row">
     <div class="col-md-8 offset-md-1">
-
       <table class="table table-bordered table-condensed">
         <thead>
           <tr>
@@ -39,22 +38,26 @@
           <td>￥<%= (@order.total_payment=(@order.shipping + @total_price).floor).to_s(:delimited) %></td>
         </tr>
       </table>
-    </div>
-    <div class="col-md-8 offset-md-1">
+  </div>
+  <div class="col-md-8 offset-md-1">
+    <div class="field">
       <h3>支払方法</h3>
       <%= @order.payment_method_i18n %>
+    </div>
+    <div class="field">
       <h3>お届け先</h3>
      〒 <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
     </div>
-    <div class="col-xs-5">
-      <%= form_with model: @order, url:orders_path, local:true do |f| %>
+    <div class="field">
+     <%= form_with model: @order, url:orders_path, local:true do |f| %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_payment %>
-        <%=f.submit "注文を確定する" %>
+        <%=f.submit "注文を確定する", class: "glyphicon glyphicon-pencil btn-sm btn-success col-xs-5" %>
       <% end %>
     </div>
-    </div>
+  </div>
+</div>
 

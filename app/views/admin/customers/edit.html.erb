@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-1">
-    <div class="col-xs-12">
       <h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h2>
       <%= form_with model: @customer, url:admin_customer_path, local: true do |f| %>
+      <%= render "layouts/error_messeges", resource: @customer %>
         <table class="row table">
           <tr>
             <th><%= f.label :"氏名" %></th>
@@ -49,10 +49,6 @@
           <%= f.submit "変更を保存" %>
         </div>
       <% end %>
-    <div class="col-md-8 offset-md-1">
-
-    </div>
-    </div>
     </div>
   </div>
 </div>

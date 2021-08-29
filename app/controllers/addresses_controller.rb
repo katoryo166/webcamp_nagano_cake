@@ -10,8 +10,14 @@ class AddressesController < ApplicationController
        @address = Address.new(address_params)
        @address.customer_id = current_customer.id
        @addresses = current_customer.addresses
-       @address.save
-       redirect_to addresses_path
+      if @address.save
+        flash[:success] = "登録しました。"
+        redirect_to addresses_path
+      else
+        @address = Address.new(address_params)
+        @address.customer_id = current_customer.id
+       @addresses = current_customer.addresses
+      end
     end
 
     def edit
