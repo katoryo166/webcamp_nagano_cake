@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
     #byebug
     if @order.update(order_params)
       flash[:success] = "注文ステータスを変更しました。"
-      redirect_to admin_order_path(@order)
+      redirect_to admin_orders_path
     else
       render 'show'
     end
